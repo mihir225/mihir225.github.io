@@ -70,14 +70,11 @@ if(isset($_POST['email'])) {
 $headers = 'From: '.$email_from."\r\n".
 'Reply-To: '.$email_from."\r\n" .
 'X-Mailer: PHP/' . phpversion();
-@mail($email_to, $email_subject, $email_message, $headers);  
+mail($email_to, $email_subject, $email_message, $headers);
+header("Location: $thankyou");
 ?>
- 
-<!-- include your own success html here -->
- 
-Thank you for contacting us. We will be in touch with you very soon.
- 
+<script>location.replace('<?php echo $thankyou;?>')</script>
 <?php
- 
 }
+die();
 ?>
